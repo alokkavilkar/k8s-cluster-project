@@ -3,16 +3,16 @@ kind: Deployment
 metadata:
   name: mongo-deployment
   labels:
-    app: mongo
+    app: mongodb
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: mongo
+      app: mongodb
   template:
     metadata:
       labels:
-        app: mongo
+        app: mongodb
     spec:
       containers:
         - name: mongodb
@@ -24,10 +24,10 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: mongo-secret
-                  key: MONGO_INITDB_ROOT_PASSWORD
+                  key: mongo-root-username
             - name: MONGO_INITDB_ROOT_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: mongo-secret
-                  key: MONGO_INITDB_ROOT_PASSWORD
+                  key: mongo-root-password
 
